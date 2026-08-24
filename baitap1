@@ -3,178 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buổi 2 - Bài 2: Đặt bàn nhà hàng</title>
+    <title>Bài 3 - Bài 1: Giày Sneaker XYZ</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #fafafa;
             margin: 0;
-            padding: 24px;
+            color: #222;
         }
 
-        form {
-            max-width: 480px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px 24px;
-            border-radius: 8px;
-        }
-
-        fieldset {
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 16px 20px;
-        }
-
-        legend {
-            font-weight: bold;
-            padding: 0 8px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 4px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        p {
-            margin: 14px 0;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 16px;
-            background: #27ae60;
+        header {
+            background: #2c3e50;
             color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
+            padding: 16px 24px;
         }
 
-        button:hover {
-            background: #219150;
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px 40px;
         }
 
-        meter {
+        section {
+            margin-top: 32px;
+        }
+
+        picture img,
+        .chi-tiet img {
             width: 100%;
-            height: 22px;
+            border-radius: 6px;
+            display: block;
         }
 
-        .ghi-chu-ban {
-            font-size: 14px;
-            color: #555;
+        video {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px;
+            color: #777;
         }
     </style>
 </head>
 
 <body>
 
-    <h1 style="text-align:center;">Đặt bàn nhà hàng</h1>
+    <header>
+        <h1>Giày Sneaker XYZ</h1>
+    </header>
 
-    <form action="#" method="post">
-        <fieldset>
-            <legend>Thông tin đặt bàn</legend>
+    <main>
 
-            <p>
-                <label for="hoten">
-                    Họ và tên: <span style="color:red">*</span>
-                </label>
-                <input type="text"
-                       id="hoten"
-                       name="hoten"
-                       placeholder="Nguyễn Văn A"
-                       required>
-            </p>
+        <!-- ===== BANNER RESPONSIVE BẰNG <picture> =====
+             Trình duyệt kiểm tra từng <source> theo thứ tự từ trên xuống,
+             "media" nào đúng điều kiện màn hình hiện tại thì lấy ảnh đó.
+             <img> ở cuối luôn bắt buộc, dùng làm fallback. -->
+        <section>
+            <picture>
+                <source
+                    media="(max-width: 600px)"
+                    srcset="https://picsum.photos/id/21/600/300">
 
-            <p>
-                <label for="phone">
-                    Số điện thoại: <span style="color:red">*</span>
-                </label>
-                <input type="tel"
-                       id="phone"
-                       name="phone"
-                       pattern="[0-9]{10}"
-                       title="Nhập đúng 10 số điện thoại"
-                       placeholder="0912345678"
-                       required>
-            </p>
+                <source
+                    media="(max-width: 1200px)"
+                    srcset="https://picsum.photos/id/21/900/400">
 
-            <p>
-                <label for="ngaydat">
-                    Ngày đặt bàn: <span style="color:red">*</span>
-                </label>
-                <input type="date"
-                       id="ngaydat"
-                       name="ngaydat"
-                       min="2026-08-14"
-                       required>
-            </p>
+                <img
+                    src="https://picsum.photos/id/21/1200/500"
+                    alt="Banner giới thiệu sneaker XYZ">
+            </picture>
+        </section>
 
-            <p>
-<label for="giodat">
-                    Giờ đặt bàn: <span style="color:red">*</span>
-                </label>
-                <input type="time"
-                       id="giodat"
-                       name="giodat"
-                       min="10:00"
-                       max="22:00"
-                       required>
-            </p>
+        <!-- ===== ẢNH CHI TIẾT DÙNG srcset/sizes
+             (đổi độ phân giải của cùng 1 ảnh) ===== -->
+        <section class="chi-tiet">
+            <h2>Chi tiết sản phẩm</h2>
+
+            <img
+                src="https://picsum.photos/id/103/800/600"
+                srcset="
+                    https://picsum.photos/id/103/400/300 400w,
+                    https://picsum.photos/id/103/600/600 800w,
+                    https://picsum.photos/id/103/1200/900 1200w"
+                sizes="(max-width: 600px) 100vw, 600px"
+                alt="Chi tiết giày Sneaker XYZ màu trắng">
 
             <p>
-                <label for="soluongkhach">Số lượng khách:</label>
-                <input type="number"
-                       id="soluongkhach"
-                       name="soluongkhach"
-                       min="1"
-                       max="20"
-                       value="2">
+                Giày sneaker XYZ - thiết kế tối giản, đế cao su chống trơn,
+                phù hợp mọi trang phục.
             </p>
+        </section>
 
-            <!-- meter: đo 1 giá trị TĨNH có ý nghĩa tốt/xấu (số bàn còn trống),
-                 KHÁC với progress (dùng cho việc đang diễn ra và sẽ hoàn thành) -->
+        <!-- ===== VIDEO DEMO SẢN PHẨM ===== -->
+        <section>
+            <h2>Video giới thiệu</h2>
 
-            <p>
-                <label for="banconso">Số bàn còn trống hôm nay:</label><br>
+            <video controls poster="https://picsum.photos/id/26/640/360">
+                <source
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    type="video/mp4">
 
-                <meter id="banconso"
-                       value="5"
-                       min="0"
-                       max="20"
-                       low="5"
-                       high="15"
-                       optimum="20">
-                    5/20 bàn
-                </meter>
+                Trình duyệt của bạn không hỗ trợ video HTML5.
+            </video>
+        </section>
 
-                <p class="ghi-chu-ban">
-                    5/20 bàn – nên đặt sớm nếu đi vào giờ cao điểm.
-                </p>
-            </p>
+        <!-- ===== AUDIO GIỚI THIỆU (VOICE-OVER) ===== -->
+        <section>
+            <h2>Nghe giới thiệu sản phẩm</h2>
 
-            <p>
-                <label for="yeucau">Yêu cầu đặc biệt:</label>
-                <textarea id="yeucau"
-                          name="yeucau"
-                          rows="3"
-                          placeholder="Ví dụ: bàn gần cửa sổ, có ghế trẻ em..."></textarea>
-            </p>
+            <audio controls>
+                <source
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
+                    type="audio/mpeg">
 
-        </fieldset>
+                Trình duyệt của bạn không hỗ trợ audio HTML5.
+            </audio>
+        </section>
 
-        <button type="submit">Xác nhận đặt bàn</button>
-    </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Shop Sneaker XYZ</p>
+    </footer>
 
 </body>
 </html>
