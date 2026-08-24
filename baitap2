@@ -3,178 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buổi 2 - Bài 2: Đặt bàn nhà hàng</title>
+
+    <title>Bài 3 - Bài 2: Blog cá nhân</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #fafafa;
             margin: 0;
+            color: #222;
+        }
+
+        header {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        header video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        header .tieu-de {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.35);
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 24px;
         }
 
-        form {
-            max-width: 480px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px 24px;
-            border-radius: 8px;
+        article {
+            margin-bottom: 32px;
         }
 
-        fieldset {
-            border: 1px solid #ddd;
+        article img {
+            width: 100%;
             border-radius: 6px;
-            padding: 16px 20px;
+            display: block;
         }
 
-        legend {
-            font-weight: bold;
-            padding: 0 8px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 4px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        p {
-            margin: 14px 0;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 16px;
-            background: #27ae60;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #219150;
-        }
-
-        meter {
-            width: 100%;
-            height: 22px;
-        }
-
-        .ghi-chu-ban {
-            font-size: 14px;
-            color: #555;
+        footer {
+            text-align: center;
+            padding: 16px;
+            color: #777;
         }
     </style>
 </head>
 
 <body>
 
-    <h1 style="text-align:center;">Đặt bàn nhà hàng</h1>
+    <!-- ===== VIDEO NỀN CHO HEADER =====
+         autoplay + muted: tự chạy khi trang load
+         loop: lặp lại liên tục
+         playsinline: chạy ngay trong trang trên mobile,
+         không tự bung fullscreen -->
+    <header>
+        <video autoplay muted loop playsinline>
+            <source
+                src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                type="video/mp4">
+        </video>
 
-    <form action="#" method="post">
-        <fieldset>
-            <legend>Thông tin đặt bàn</legend>
+        <div class="tieu-de">
+            <h1>Blog Công Nghệ Của Tôi</h1>
+            <p>Chia sẻ kiến thức lập trình web mỗi tuần</p>
+        </div>
+    </header>
 
-            <p>
-                <label for="hoten">
-                    Họ và tên: <span style="color:red">*</span>
-                </label>
-                <input type="text"
-                       id="hoten"
-                       name="hoten"
-                       placeholder="Nguyễn Văn A"
-                       required>
-            </p>
+    <main>
 
-            <p>
-                <label for="phone">
-                    Số điện thoại: <span style="color:red">*</span>
-                </label>
-                <input type="tel"
-                       id="phone"
-                       name="phone"
-                       pattern="[0-9]{10}"
-                       title="Nhập đúng 10 số điện thoại"
-                       placeholder="0912345678"
-                       required>
-            </p>
+        <!-- ===== BÀI VIẾT 1: dùng srcset/sizes cho ảnh minh họa ===== -->
+        <article>
+            <h2>Vì sao nên học HTML5 và CSS3 ngày hôm nay?</h2>
 
-            <p>
-                <label for="ngaydat">
-                    Ngày đặt bàn: <span style="color:red">*</span>
-                </label>
-                <input type="date"
-                       id="ngaydat"
-                       name="ngaydat"
-                       min="2026-08-14"
-                       required>
-            </p>
+            <img
+                src="https://picsum.photos/id/60/800/450"
+                srcset="
+                    https://picsum.photos/id/60/400/225 400w,
+                    https://picsum.photos/id/60/800/450 800w,
+                    https://picsum.photos/id/60/1200/675 1200w"
+                sizes="(max-width: 600px) 100vw, 800px"
+                alt="Minh họa lập trình web">
 
             <p>
-<label for="giodat">
-                    Giờ đặt bàn: <span style="color:red">*</span>
-                </label>
-                <input type="time"
-                       id="giodat"
-                       name="giodat"
-                       min="10:00"
-                       max="22:00"
-                       required>
+                HTML5 và CSS3 là nền tảng của mọi giao diện web hiện đại...
             </p>
+        </article>
+
+        <!-- ===== BÀI VIẾT 2: dùng <picture> để đổi định dạng ảnh
+             (.webp ưu tiên, .jpg dự phòng)
+             Trong dự án thực tế, ảnh .webp nhẹ hơn .jpg rất nhiều.
+             Ở đây minh họa đúng cú pháp; nếu trình duyệt không hỗ trợ
+             .webp sẽ tự động dùng .jpg dự phòng. -->
+        <article>
+            <h2>Responsive Images: Tối ưu tốc độ tải trang</h2>
+
+            <picture>
+                <source
+                    srcset="https://picsum.photos/id/48/800/450.webp"
+                    type="image/webp">
+
+                <source
+                    srcset="https://picsum.photos/id/48/800/450"
+                    type="image/jpeg">
+
+                <img
+                    src="https://picsum.photos/id/48/800/450"
+                    alt="Tối ưu tốc độ tải ảnh">
+            </picture>
 
             <p>
-                <label for="soluongkhach">Số lượng khách:</label>
-                <input type="number"
-                       id="soluongkhach"
-                       name="soluongkhach"
-                       min="1"
-                       max="20"
-                       value="2">
+                Chọn đúng định dạng và kích thước ảnh giúp trang tải nhanh hơn đáng kể,
+                đặc biệt quan trọng với người dùng mobile 3G/4G.
             </p>
+        </article>
 
-            <!-- meter: đo 1 giá trị TĨNH có ý nghĩa tốt/xấu (số bàn còn trống),
-                 KHÁC với progress (dùng cho việc đang diễn ra và sẽ hoàn thành) -->
+    </main>
 
-            <p>
-                <label for="banconso">Số bàn còn trống hôm nay:</label><br>
-
-                <meter id="banconso"
-                       value="5"
-                       min="0"
-                       max="20"
-                       low="5"
-                       high="15"
-                       optimum="20">
-                    5/20 bàn
-                </meter>
-
-                <p class="ghi-chu-ban">
-                    5/20 bàn – nên đặt sớm nếu đi vào giờ cao điểm.
-                </p>
-            </p>
-
-            <p>
-                <label for="yeucau">Yêu cầu đặc biệt:</label>
-                <textarea id="yeucau"
-                          name="yeucau"
-                          rows="3"
-                          placeholder="Ví dụ: bàn gần cửa sổ, có ghế trẻ em..."></textarea>
-            </p>
-
-        </fieldset>
-
-        <button type="submit">Xác nhận đặt bàn</button>
-    </form>
+    <footer>
+        <p>&copy; 2026 Blog Công Nghệ Của Tôi</p>
+    </footer>
 
 </body>
 </html>
